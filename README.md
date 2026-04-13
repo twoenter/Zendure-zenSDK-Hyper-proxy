@@ -1,18 +1,31 @@
 # Zendure-zenSDK-Hyper-proxy
-Maak gebruik van de Gielz-automatisering voor Zendure thuisbatterijen in combinatie met een Hyper2000 in plaats van een zenSDK ondersteund apparaat. Alles verloopt 100% lokaal via Home Assistant. Je bent niet afhankelijk van de verbinding met de Zendure cloud. De Gielz-automatisering werkt alleen met één Zendure apparaat met zenSDK ondersteuning.
+Wil je het maximale uit je Zendure thuisbatterij halen zonder afhankelijk te zijn van de cloud? Met deze slimme oplossing combineer je de kracht van de [Gielz-automatisering](https://github.com/Gielz1986/Zendure-HA-zenSDK) met een Hyper2000 — volledig lokaal aangestuurd via Home Assistant.
 
-Met deze NODE-RED flow kun je de gielz-automatisering gebruiken met je Hyper2000. De NODE-RED flow zorgt voor de vertaling van de commando's die de gielz automatisering normaliter verzend naar de SolarFlow 2400ac.
+Hoewel de Gielz-automatisering oorspronkelijk alleen werkt met zenSDK-ondersteunde apparaten, maakt deze Node-RED flow het mogelijk om ook je Hyper2000 naadloos te integreren. De flow vertaalt automatisch de commando’s die normaal naar een SolarFlow 2400AC gaan, zodat jij profiteert van dezelfde geavanceerde automatisering — maar dan met jouw Hyper2000.
+
+Meer controle, meer flexibiliteit, en vooral: geen afhankelijkheid meer van de Zendure cloud.
 
 ## Instructies Node-RED app
 
-Installeer de NODE-RED Home-Assistant addon (tegenwoordig app). Stel het volgende in:
+Installeer de [Node-Red Home-Assistant addon](https://github.com/hassio-addons/app-node-red) (tegenwoordig app). Stel het volgende in:
 
-Schakel "ssl" uit
-Schakel "Ongebruikte optionele configuratieopties tonen" in zodat je de volgende opties ziet:
-Schakel "leave_front_door_open" in
-Sla de configuratie op en (her)start Node-RED.
+- Schakel "ssl" uit
+- Schakel "Ongebruikte optionele configuratieopties tonen" in zodat je de volgende opties ziet:
+- Schakel "leave_front_door_open" in
+- Sla de configuratie op en (her)start Node-RED.
 
 ## Instructies Node-RED Companion
 
-Installeer Node red companion via HACS
+Installeer [Node-RED Home Assistant companion](https://github.com/zachowj/hass-node-red) via HACS
+Voeg de Node-Red companion integratie toe aan je integraties (niet overslaan)
+
+## Configureer Gielz
+
+Importeer het [Gielz package](https://github.com/Gielz1986/Zendure-HA-zenSDK/blob/main/README.nl.md#%EF%B8%8F%E2%83%A3-configuratie-en-herstart) in jouw configuration.yaml 
+Importeer de [Gielz automatisering](https://github.com/Gielz1986/Zendure-HA-zenSDK/blob/main/README.nl.md#2%EF%B8%8F%E2%83%A3-zendure-zensdk-gielz-automatisering)
+Optioneel maar aanbevolen: importeer het [dashboard](https://github.com/Gielz1986/Zendure-HA-zenSDK/blob/main/README.nl.md#-optioneel-plug-n-play-dashboard)
+
+## Configureer de zenSDK-Hyper-proxy
+
+Importeer in een nieuwe flow de 
 
