@@ -27,5 +27,5 @@ Installeer de [Node-Red Home-Assistant addon](https://github.com/hassio-addons/a
 
 ## Configureer de zenSDK-Hyper-proxy
 
-Importeer in een nieuwe flow de 
+- Importeer in een nieuwe flow de [GET flow](https://github.com/twoenter/Zendure-zenSDK-Hyper-proxy/blob/main/zenSDK%20Hyper2000%20GET) 
 
