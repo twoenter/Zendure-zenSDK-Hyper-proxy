@@ -2,7 +2,7 @@
     {
         "id": "58e0b7bd92defb71",
         "type": "tab",
-        "label": "Gielz Hyper2000 GET",
+        "label": "zenSDK Hyper2000 GET",
         "disabled": false,
         "info": "",
         "env": []
@@ -1800,7 +1800,7 @@
         "enableGlobalContextStore": false
     },
     {
-        "id": "a11ce75f4a9850ee",
+        "id": "cf0676824d01f2c4",
         "type": "global-config",
         "env": [],
         "modules": {
