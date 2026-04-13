@@ -16,14 +16,14 @@ Installeer de [Node-Red Home-Assistant addon](https://github.com/hassio-addons/a
 
 ## Instructies Node-RED Companion
 
-Installeer [Node-RED Home Assistant companion](https://github.com/zachowj/hass-node-red) via HACS
-Voeg de Node-Red companion integratie toe aan je integraties (niet overslaan)
+- Installeer [Node-RED Home Assistant companion](https://github.com/zachowj/hass-node-red) via HACS
+- Voeg de Node-Red companion integratie toe aan je integraties (niet overslaan)
 
 ## Configureer Gielz
 
-Importeer het [Gielz package](https://github.com/Gielz1986/Zendure-HA-zenSDK/blob/main/README.nl.md#%EF%B8%8F%E2%83%A3-configuratie-en-herstart) in jouw configuration.yaml 
-Importeer de [Gielz automatisering](https://github.com/Gielz1986/Zendure-HA-zenSDK/blob/main/README.nl.md#2%EF%B8%8F%E2%83%A3-zendure-zensdk-gielz-automatisering)
-Optioneel maar aanbevolen: importeer het [dashboard](https://github.com/Gielz1986/Zendure-HA-zenSDK/blob/main/README.nl.md#-optioneel-plug-n-play-dashboard)
+- Importeer het [Gielz package](https://github.com/Gielz1986/Zendure-HA-zenSDK/blob/main/README.nl.md#%EF%B8%8F%E2%83%A3-configuratie-en-herstart) in jouw configuration.yaml 
+- Importeer de [Gielz automatisering](https://github.com/Gielz1986/Zendure-HA-zenSDK/blob/main/README.nl.md#2%EF%B8%8F%E2%83%A3-zendure-zensdk-gielz-automatisering)
+- Optioneel maar aanbevolen: importeer het [dashboard](https://github.com/Gielz1986/Zendure-HA-zenSDK/blob/main/README.nl.md#-optioneel-plug-n-play-dashboard)
 
 ## Configureer de zenSDK-Hyper-proxy
 
