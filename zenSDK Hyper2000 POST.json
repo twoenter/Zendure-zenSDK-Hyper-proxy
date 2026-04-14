@@ -1,0 +1,509 @@
+[
+    {
+        "id": "7b283a64e97a52e9",
+        "type": "tab",
+        "label": "zenSDK Hyper2000 POST",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "879b91afb308bc96",
+        "type": "http in",
+        "z": "7b283a64e97a52e9",
+        "name": "API Proxy POST",
+        "url": "/properties/write",
+        "method": "post",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 40,
+        "wires": [
+            [
+                "a890c5f5a22fd7c4"
+            ]
+        ]
+    },
+    {
+        "id": "ad1b38d62db7f75a",
+        "type": "api-call-service",
+        "z": "7b283a64e97a52e9",
+        "name": "Operation mode",
+        "server": "a27a305a.5ed34",
+        "version": 7,
+        "debugenabled": false,
+        "action": "select.select_option",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "select.zendure_manager_operation"
+        ],
+        "labelId": [],
+        "data": "{\"option\":\"{{payload.properties.smartMode}}\"}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "select",
+        "service": "select_option",
+        "x": 1080,
+        "y": 280,
+        "wires": [
+            [
+                "ebc539c4731fb4fc"
+            ]
+        ]
+    },
+    {
+        "id": "a890c5f5a22fd7c4",
+        "type": "json",
+        "z": "7b283a64e97a52e9",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 450,
+        "y": 40,
+        "wires": [
+            [
+                "98fcca8b6bdc7416"
+            ]
+        ]
+    },
+    {
+        "id": "b7a2ba7b6e2b35cc",
+        "type": "api-call-service",
+        "z": "7b283a64e97a52e9",
+        "name": "Hyper2000 Limiet Ontladen",
+        "server": "a27a305a.5ed34",
+        "version": 7,
+        "debugenabled": true,
+        "action": "number.set_value",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "number.hyper2000_output_limit"
+        ],
+        "labelId": [],
+        "data": "{\"value\":\"{{payload.properties.outputLimit}}\"}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "number",
+        "service": "set_value",
+        "x": 1120,
+        "y": 100,
+        "wires": [
+            [
+                "5420bedf18eda9f4"
+            ]
+        ]
+    },
+    {
+        "id": "400cad8114a65f5f",
+        "type": "api-call-service",
+        "z": "7b283a64e97a52e9",
+        "name": "Hyper2000 Limiet Laden",
+        "server": "a27a305a.5ed34",
+        "version": 7,
+        "debugenabled": true,
+        "action": "number.set_value",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "number.hyper2000_input_limit"
+        ],
+        "labelId": [],
+        "data": "{\"value\":\"{{payload.properties.inputLimit}}\"}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "number",
+        "service": "set_value",
+        "x": 1110,
+        "y": 160,
+        "wires": [
+            [
+                "d45ec3ba658172ad"
+            ]
+        ]
+    },
+    {
+        "id": "98fcca8b6bdc7416",
+        "type": "change",
+        "z": "7b283a64e97a52e9",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "acMode",
+                "pt": "msg",
+                "to": "payload.properties.acMode",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "inputLimit",
+                "pt": "msg",
+                "to": "payload.properties.inputLimit",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "outputLimit",
+                "pt": "msg",
+                "to": "payload.properties.outputLimit",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "smartMode",
+                "pt": "msg",
+                "to": "payload.properties.smartMode",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 40,
+        "wires": [
+            [
+                "9c64c4a1cb23eda6",
+                "4a7ea0bd668da74f"
+            ]
+        ]
+    },
+    {
+        "id": "d45ec3ba658172ad",
+        "type": "change",
+        "z": "7b283a64e97a52e9",
+        "name": "acMode",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload.properties.acMode",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "input",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload.properties.acMode",
+                "pt": "msg",
+                "from": "2",
+                "fromt": "num",
+                "to": "output",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 880,
+        "y": 220,
+        "wires": [
+            [
+                "33624c73a39e2c75"
+            ]
+        ]
+    },
+    {
+        "id": "4dec465eeed2184a",
+        "type": "api-call-service",
+        "z": "7b283a64e97a52e9",
+        "name": "Bedrijfsmodus",
+        "server": "a27a305a.5ed34",
+        "version": 7,
+        "debugenabled": false,
+        "action": "select.select_option",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "select.hyper2000_ac_mode"
+        ],
+        "labelId": [],
+        "data": "{\"option\":\"{{payload.properties.acMode}}\"}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "select",
+        "service": "select_option",
+        "x": 1080,
+        "y": 220,
+        "wires": [
+            [
+                "0f5420ad4e78cef2"
+            ]
+        ]
+    },
+    {
+        "id": "9c64c4a1cb23eda6",
+        "type": "change",
+        "z": "7b283a64e97a52e9",
+        "name": "smartMode",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload.properties.smartMode",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "off",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload.properties.smartMode",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "smart",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 280,
+        "wires": [
+            [
+                "ad1b38d62db7f75a"
+            ]
+        ]
+    },
+    {
+        "id": "ebc539c4731fb4fc",
+        "type": "http response",
+        "z": "7b283a64e97a52e9",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1370,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "6282d3ebc7ab7be0",
+        "type": "comment",
+        "z": "7b283a64e97a52e9",
+        "name": "Onvangen REST verzoek uit Home Assistant",
+        "info": "",
+        "x": 210,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "a4b7e695cca39d1f",
+        "type": "comment",
+        "z": "7b283a64e97a52e9",
+        "name": "Verzoek splitsen naar modi en limieten",
+        "info": "",
+        "x": 550,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "28e817642a236f4b",
+        "type": "comment",
+        "z": "7b283a64e97a52e9",
+        "name": "De juiste vertaling naar acMode en smartMode",
+        "info": "",
+        "x": 790,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "fb47e5f008cb213b",
+        "type": "comment",
+        "z": "7b283a64e97a52e9",
+        "name": "Waarden wegschrijven naar Home Assistant",
+        "info": "Gebruik de volgende entities uit de Fireson integratie:\n\nnumber.hyper2000_output_limit\nnumber.hyper2000_input_limit\nselect.hyper2000_ac_mode\nselect.zendure_manager_operation",
+        "x": 1170,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "17314c7829620f6f",
+        "type": "comment",
+        "z": "7b283a64e97a52e9",
+        "name": "Statuscode 200 geven zodat het REST request ook weet dat instellen gelukt is",
+        "info": "",
+        "x": 1590,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "31a09c2856eba583",
+        "type": "comment",
+        "z": "7b283a64e97a52e9",
+        "name": "Let op klik hier",
+        "info": "Zorg dat je op minimaal Gielz April versie of \nlater gebruikt en de juiste waarden\ningevuld hebt op het dashboard-gielz/configuratie\nonder configuratie laden en ontladen.",
+        "x": 110,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "0f5420ad4e78cef2",
+        "type": "http response",
+        "z": "7b283a64e97a52e9",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1370,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "4a7ea0bd668da74f",
+        "type": "function",
+        "z": "7b283a64e97a52e9",
+        "name": "OutputLimit",
+        "func": "const value = Number(msg.payload.properties.outputLimit) || 0;\n\nlet payload = msg.payload; // bestaande payload onthouden\n\nif (isNaN(value)) {\n    payload.properties.outputLimit = 0\n} else {\n    payload.properties.outputLimit = value;\n}\n\nmsg.payload = payload;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 100,
+        "wires": [
+            [
+                "b7a2ba7b6e2b35cc"
+            ]
+        ]
+    },
+    {
+        "id": "5420bedf18eda9f4",
+        "type": "function",
+        "z": "7b283a64e97a52e9",
+        "name": "inputLimit",
+        "func": "const value = Number(msg.payload.properties.inputLimit) || 0;\n\nlet payload = msg.payload; // bestaande payload onthouden\n\nif (isNaN(value)) {\n    payload.properties.inputLimit = 0\n} else {\n    payload.properties.inputLimit = value;\n}\n\nmsg.payload = payload;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 160,
+        "wires": [
+            [
+                "400cad8114a65f5f"
+            ]
+        ]
+    },
+    {
+        "id": "959b75c395fe1097",
+        "type": "function",
+        "z": "7b283a64e97a52e9",
+        "name": "function 2",
+        "func": "var acMode = msg.payload.properties.acMode;\nvar relaisstand = msg.payload.relaisstand;\n\nlet payload = msg.payload; // bestaande payload onthouden\n\nif (acMode !== \"input\" && acMode !== \"output\") {\n\n   if (relaisstand === \"Ontlaadstand\") {\n      payload.properties.acMode = \"output\";\n   }\n\n   if (relaisstand === \"Oplaadstand\") {\n      payload.properties.acMode = \"input\";\n   }\n}\n\nmsg.payload = payload;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1000,
+        "y": 480,
+        "wires": [
+            [
+                "4dec465eeed2184a"
+            ]
+        ]
+    },
+    {
+        "id": "33624c73a39e2c75",
+        "type": "api-current-state",
+        "z": "7b283a64e97a52e9",
+        "name": "",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.zendure_2400_ac_relais_stand",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.relaisstand",
+                "propertyType": "msg",
+                "value": "string",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 700,
+        "y": 480,
+        "wires": [
+            [
+                "959b75c395fe1097"
+            ]
+        ]
+    },
+    {
+        "id": "a27a305a.5ed34",
+        "type": "server",
+        "name": "Home Assistant",
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": [],
+        "connectionDelay": false,
+        "cacheJson": false,
+        "heartbeat": false,
+        "heartbeatInterval": "",
+        "statusSeparator": "",
+        "enableGlobalContextStore": false
+    },
+    {
+        "id": "084859e260d86d1f",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-home-assistant-websocket": "0.80.3"
+        }
+    }
+]
