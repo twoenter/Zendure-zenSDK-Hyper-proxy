@@ -41,7 +41,7 @@
             "select.zendure_manager_operation"
         ],
         "labelId": [],
-        "data": "{\"option\":\"{{payload.properties.smartMode}}\"}",
+        "data": "{\"option\":\"off\"}",
         "dataType": "json",
         "mergeContext": "",
         "mustacheAltTags": false,
@@ -50,8 +50,8 @@
         "blockInputOverrides": true,
         "domain": "select",
         "service": "select_option",
-        "x": 1080,
-        "y": 280,
+        "x": 640,
+        "y": 420,
         "wires": [
             [
                 "ebc539c4731fb4fc"
@@ -99,8 +99,8 @@
         "blockInputOverrides": true,
         "domain": "number",
         "service": "set_value",
-        "x": 1120,
-        "y": 100,
+        "x": 680,
+        "y": 140,
         "wires": [
             [
                 "5420bedf18eda9f4"
@@ -132,8 +132,8 @@
         "blockInputOverrides": true,
         "domain": "number",
         "service": "set_value",
-        "x": 1110,
-        "y": 160,
+        "x": 670,
+        "y": 200,
         "wires": [
             [
                 "d45ec3ba658172ad"
@@ -184,7 +184,6 @@
         "y": 40,
         "wires": [
             [
-                "9c64c4a1cb23eda6",
                 "4a7ea0bd668da74f"
             ]
         ]
@@ -219,8 +218,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 880,
-        "y": 220,
+        "x": 900,
+        "y": 200,
         "wires": [
             [
                 "33624c73a39e2c75"
@@ -252,46 +251,8 @@
         "blockInputOverrides": true,
         "domain": "select",
         "service": "select_option",
-        "x": 1080,
-        "y": 220,
-        "wires": [
-            [
-                "0f5420ad4e78cef2"
-            ]
-        ]
-    },
-    {
-        "id": "9c64c4a1cb23eda6",
-        "type": "change",
-        "z": "7b283a64e97a52e9",
-        "name": "smartMode",
-        "rules": [
-            {
-                "t": "change",
-                "p": "payload.properties.smartMode",
-                "pt": "msg",
-                "from": "0",
-                "fromt": "num",
-                "to": "off",
-                "tot": "str"
-            },
-            {
-                "t": "change",
-                "p": "payload.properties.smartMode",
-                "pt": "msg",
-                "from": "1",
-                "fromt": "num",
-                "to": "smart",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 890,
-        "y": 280,
+        "x": 640,
+        "y": 360,
         "wires": [
             [
                 "ad1b38d62db7f75a"
@@ -303,10 +264,10 @@
         "type": "http response",
         "z": "7b283a64e97a52e9",
         "name": "",
-        "statusCode": "",
+        "statusCode": "200",
         "headers": {},
-        "x": 1370,
-        "y": 280,
+        "x": 920,
+        "y": 420,
         "wires": []
     },
     {
@@ -335,18 +296,8 @@
         "z": "7b283a64e97a52e9",
         "name": "De juiste vertaling naar acMode en smartMode",
         "info": "",
-        "x": 790,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "fb47e5f008cb213b",
-        "type": "comment",
-        "z": "7b283a64e97a52e9",
-        "name": "Waarden wegschrijven naar Home Assistant",
-        "info": "Gebruik de volgende entities uit de Fireson integratie:\n\nnumber.hyper2000_output_limit\nnumber.hyper2000_input_limit\nselect.hyper2000_ac_mode\nselect.zendure_manager_operation",
-        "x": 1170,
-        "y": 340,
+        "x": 730,
+        "y": 320,
         "wires": []
     },
     {
@@ -355,8 +306,8 @@
         "z": "7b283a64e97a52e9",
         "name": "Statuscode 200 geven zodat het REST request ook weet dat instellen gelukt is",
         "info": "",
-        "x": 1590,
-        "y": 380,
+        "x": 1130,
+        "y": 460,
         "wires": []
     },
     {
@@ -367,17 +318,6 @@
         "info": "Zorg dat je op minimaal Gielz April versie of \nlater gebruikt en de juiste waarden\ningevuld hebt op het dashboard-gielz/configuratie\nonder configuratie laden en ontladen.",
         "x": 110,
         "y": 120,
-        "wires": []
-    },
-    {
-        "id": "0f5420ad4e78cef2",
-        "type": "http response",
-        "z": "7b283a64e97a52e9",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1370,
-        "y": 240,
         "wires": []
     },
     {
@@ -392,8 +332,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 890,
-        "y": 100,
+        "x": 470,
+        "y": 140,
         "wires": [
             [
                 "b7a2ba7b6e2b35cc"
@@ -412,8 +352,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 880,
-        "y": 160,
+        "x": 480,
+        "y": 200,
         "wires": [
             [
                 "400cad8114a65f5f"
@@ -424,7 +364,7 @@
         "id": "959b75c395fe1097",
         "type": "function",
         "z": "7b283a64e97a52e9",
-        "name": "function 2",
+        "name": "relaisstand -> acMode",
         "func": "var acMode = msg.payload.properties.acMode;\nvar relaisstand = msg.payload.relaisstand;\n\nlet payload = msg.payload; // bestaande payload onthouden\n\nif (acMode !== \"input\" && acMode !== \"output\") {\n\n   if (relaisstand === \"Ontlaadstand\") {\n      payload.properties.acMode = \"output\";\n   }\n\n   if (relaisstand === \"Oplaadstand\") {\n      payload.properties.acMode = \"input\";\n   }\n}\n\nmsg.payload = payload;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -432,8 +372,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1000,
-        "y": 480,
+        "x": 860,
+        "y": 260,
         "wires": [
             [
                 "4dec465eeed2184a"
@@ -444,7 +384,7 @@
         "id": "33624c73a39e2c75",
         "type": "api-current-state",
         "z": "7b283a64e97a52e9",
-        "name": "",
+        "name": "relais stand",
         "server": "a27a305a.5ed34",
         "version": 3,
         "outputs": 1,
@@ -476,8 +416,8 @@
         "override_payload": "msg",
         "entity_location": "data",
         "override_data": "msg",
-        "x": 700,
-        "y": 480,
+        "x": 630,
+        "y": 260,
         "wires": [
             [
                 "959b75c395fe1097"
@@ -499,7 +439,7 @@
         "enableGlobalContextStore": false
     },
     {
-        "id": "084859e260d86d1f",
+        "id": "1450c5c24e2cb0c8",
         "type": "global-config",
         "env": [],
         "modules": {
