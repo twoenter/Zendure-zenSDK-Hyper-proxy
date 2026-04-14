@@ -5,8 +5,10 @@ Hoewel de Gielz-automatisering oorspronkelijk alleen werkt met zenSDK-ondersteun
 
 Meer controle, meer flexibiliteit, en vooral: geen afhankelijkheid meer van de Zendure cloud.
 
-## Instructies Node-RED app
+## Instructies Zendure Hyper2000 integratie in Home Assistant
+Installeer en configureer jouw Hyper2000 via de [Zendure-HA integratie](https://github.com/Zendure/Zendure-HA)
 
+## Instructies Node-RED app
 Installeer de [Node-Red Home-Assistant addon](https://github.com/hassio-addons/app-node-red) (tegenwoordig app). Stel het volgende in:
 
 - Schakel "ssl" uit
@@ -15,17 +17,16 @@ Installeer de [Node-Red Home-Assistant addon](https://github.com/hassio-addons/a
 - Sla de configuratie op en (her)start Node-RED.
 
 ## Instructies Node-RED Companion
-
 - Installeer [Node-RED Home Assistant companion](https://github.com/zachowj/hass-node-red) via HACS
 - Voeg de Node-Red companion integratie toe aan je integraties (niet overslaan)
 
 ## Configureer Gielz
-
 - Importeer het [Gielz package](https://github.com/Gielz1986/Zendure-HA-zenSDK/blob/main/README.nl.md#%EF%B8%8F%E2%83%A3-configuratie-en-herstart) in jouw configuration.yaml 
 - Importeer de [Gielz automatisering](https://github.com/Gielz1986/Zendure-HA-zenSDK/blob/main/README.nl.md#2%EF%B8%8F%E2%83%A3-zendure-zensdk-gielz-automatisering)
 - Optioneel maar aanbevolen: importeer het [dashboard](https://github.com/Gielz1986/Zendure-HA-zenSDK/blob/main/README.nl.md#-optioneel-plug-n-play-dashboard)
 
 ## Configureer de zenSDK-Hyper-proxy
 
-- Importeer in een nieuwe flow de [GET flow](https://github.com/twoenter/Zendure-zenSDK-Hyper-proxy/blob/main/zenSDK%20Hyper2000%20GET) 
+- Importeer in een nieuwe Node-red flow  de [GET flow](https://github.com/twoenter/Zendure-zenSDK-Hyper-proxy/blob/main/zenSDK%20Hyper2000%20GET). Deze Node-red flow zorgt ervoor dat de informatie uit de Hyper naar de zendure entiteiten vertaald wordt voor de Gielz automatisering en dashboard.
+- Importeer in een nieuwe Node-red flow de [WRITE flow](https://github.com/twoenter/Zendure-zenSDK-Hyper-proxy/blob/main/zenSDK%20Hyper2000%20POST.json). Deze Node-red flow zorgt ervoor dat de waarden die de Gielz automatisering bepaald ook werkelijk naar de Hyper gecommuniceerd worden.    
 
