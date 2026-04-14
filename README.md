@@ -29,4 +29,15 @@ Installeer de [Node-Red Home-Assistant addon](https://github.com/hassio-addons/a
 
 - Importeer in een nieuwe Node-red flow  de [GET flow](https://github.com/twoenter/Zendure-zenSDK-Hyper-proxy/blob/main/zenSDK%20Hyper2000%20GET). Deze Node-red flow zorgt ervoor dat de informatie uit de Hyper naar de zendure entiteiten vertaald wordt voor de Gielz automatisering en dashboard.
 - Importeer in een nieuwe Node-red flow de [WRITE flow](https://github.com/twoenter/Zendure-zenSDK-Hyper-proxy/blob/main/zenSDK%20Hyper2000%20POST.json). Deze Node-red flow zorgt ervoor dat de waarden die de Gielz automatisering bepaald ook werkelijk naar de Hyper gecommuniceerd worden.    
+- Pas in de GET flow het volgende aan:
+-- het aantal batterijen
+-- de serienummers van de batterijen en hyper
 
+- Pas in de POST flow het volgende aan:
+-- niets! 
+
+In principe zijn alle standaard namen gebruikt zoals de Zendure-Ha integratie ze aanmaakt, maar kijk ze voor de zekerheid na. 
+
+## Configureer gielz (2)
+- Stel in het gielz configuratie dashboard het ip-adres in van de Zendure op 
+``localhost:1880/endpoint``. Dit is het ip-adres van node red waardoor er connectie gelegd wordt tussen home assistant en node red. De twee beginnen over en weer te communiceren. 
