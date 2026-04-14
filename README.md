@@ -9,6 +9,7 @@ Meer controle, meer flexibiliteit, en vooral: geen afhankelijkheid meer van de Z
 
 ## Instructies Zendure Hyper2000 integratie in Home Assistant
 - Installeer en configureer jouw Hyper2000 via de [Zendure-HA integratie](https://github.com/Zendure/Zendure-HA)
+- Voor de beste prestaties zorg je voor lokale connectie via een bluetooth-proxy
 
 <img height="250" alt="image" src="https://github.com/user-attachments/assets/a4d01e5a-ff99-416d-9a35-d0837e34253c" />
 
