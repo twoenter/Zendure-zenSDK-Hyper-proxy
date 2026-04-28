@@ -54,7 +54,7 @@
         "y": 420,
         "wires": [
             [
-                "ebc539c4731fb4fc"
+                "15a5a3d4093ff82c"
             ]
         ]
     },
@@ -266,8 +266,8 @@
         "name": "",
         "statusCode": "200",
         "headers": {},
-        "x": 920,
-        "y": 420,
+        "x": 1000,
+        "y": 660,
         "wires": []
     },
     {
@@ -306,8 +306,8 @@
         "z": "7b283a64e97a52e9",
         "name": "Statuscode 200 geven zodat het REST request ook weet dat instellen gelukt is",
         "info": "",
-        "x": 1130,
-        "y": 460,
+        "x": 1210,
+        "y": 620,
         "wires": []
     },
     {
@@ -365,18 +365,19 @@
         "type": "function",
         "z": "7b283a64e97a52e9",
         "name": "relaisstand -> acMode",
-        "func": "var acMode = msg.payload.properties.acMode;\nvar relaisstand = msg.payload.relaisstand;\n\nlet payload = msg.payload; // bestaande payload onthouden\n\nif (acMode !== \"input\" && acMode !== \"output\") {\n\n   if (relaisstand === \"Ontlaadstand\") {\n      payload.properties.acMode = \"output\";\n   }\n\n   if (relaisstand === \"Oplaadstand\") {\n      payload.properties.acMode = \"input\";\n   }\n}\n\nmsg.payload = payload;\nreturn msg;",
+        "func": "var acMode = msg.payload.properties.acMode;\nvar relaisstand = msg.payload.relaisstand;\n\nlet payload = msg.payload; // bestaande payload onthouden\n\nif (acMode !== \"input\" && acMode !== \"output\") {\n\n   if (relaisstand == \"Ontlaadstand\") {\n      payload.properties.acMode = \"output\";\n   }\n\n   if (relaisstand == \"Oplaadstand\") {\n      payload.properties.acMode = \"input\";\n   }\n}\n\nmsg.payload = payload;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 860,
+        "x": 940,
         "y": 260,
         "wires": [
             [
-                "4dec465eeed2184a"
+                "4dec465eeed2184a",
+                "8f043e93af499a11"
             ]
         ]
     },
@@ -384,7 +385,7 @@
         "id": "33624c73a39e2c75",
         "type": "api-current-state",
         "z": "7b283a64e97a52e9",
-        "name": "relais stand",
+        "name": "zendure 2400 ac relais stand",
         "server": "a27a305a.5ed34",
         "version": 3,
         "outputs": 1,
@@ -416,11 +417,239 @@
         "override_payload": "msg",
         "entity_location": "data",
         "override_data": "msg",
-        "x": 630,
+        "x": 680,
         "y": 260,
         "wires": [
             [
                 "959b75c395fe1097"
+            ]
+        ]
+    },
+    {
+        "id": "8f043e93af499a11",
+        "type": "debug",
+        "z": "7b283a64e97a52e9",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "101030f32f3c84a7",
+        "type": "debug",
+        "z": "7b283a64e97a52e9",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "f5215738e966c13f",
+        "type": "api-call-service",
+        "z": "7b283a64e97a52e9",
+        "name": "Hyper2000 minimale SOC",
+        "server": "a27a305a.5ed34",
+        "version": 7,
+        "debugenabled": true,
+        "action": "number.set_value",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "number.hyper2000_min_soc"
+        ],
+        "labelId": [],
+        "data": "{\"value\":\"{{payload.properties.minSoc}}\"}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "number",
+        "service": "set_value",
+        "x": 670,
+        "y": 540,
+        "wires": [
+            [
+                "f616d54cc5fc5f47"
+            ]
+        ]
+    },
+    {
+        "id": "15a5a3d4093ff82c",
+        "type": "api-current-state",
+        "z": "7b283a64e97a52e9",
+        "name": "minSoc",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "number.hyper2000_min_soc",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.minSoc",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 620,
+        "y": 480,
+        "wires": [
+            [
+                "5b71938202e0993d"
+            ]
+        ]
+    },
+    {
+        "id": "5b71938202e0993d",
+        "type": "function",
+        "z": "7b283a64e97a52e9",
+        "name": "minSoc",
+        "func": "const new_minSoc = msg.payload.properties.minSoc\nconst current_minSoc = msg.payload.minSoc\n\nlet payload = msg.payload; // bestaande payload onthouden\n\nif (new_minSoc > 0) {\n    msg.payload.properties.minSoc = new_minSoc/10;\n} else {\n    msg.payload.properties.minSoc = current_minSoc;\n}\n\nmsg.payload = payload;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 480,
+        "wires": [
+            [
+                "f5215738e966c13f"
+            ]
+        ]
+    },
+    {
+        "id": "f1ca794d27d35924",
+        "type": "api-call-service",
+        "z": "7b283a64e97a52e9",
+        "name": "Hyper2000 maximale SOC",
+        "server": "a27a305a.5ed34",
+        "version": 7,
+        "debugenabled": true,
+        "action": "number.set_value",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "number.hyper2000_soc_set"
+        ],
+        "labelId": [],
+        "data": "{\"value\":\"{{payload.properties.socSet}}\"}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "number",
+        "service": "set_value",
+        "x": 680,
+        "y": 660,
+        "wires": [
+            [
+                "ebc539c4731fb4fc"
+            ]
+        ]
+    },
+    {
+        "id": "f616d54cc5fc5f47",
+        "type": "api-current-state",
+        "z": "7b283a64e97a52e9",
+        "name": "socSet",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "number.hyper2000_soc_set",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.socSet",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 610,
+        "y": 600,
+        "wires": [
+            [
+                "773658da631a08e3"
+            ]
+        ]
+    },
+    {
+        "id": "773658da631a08e3",
+        "type": "function",
+        "z": "7b283a64e97a52e9",
+        "name": "socSet",
+        "func": "const new_socSet = msg.payload.properties.socSet\nconst current_socSet = msg.payload.socSet\n\nlet payload = msg.payload; // bestaande payload onthouden\n\nif (isNaN(new_socSet)) {\n    msg.payload.properties.socSet = current_socSet;\n} else {\n    msg.payload.properties.socSet = new_socSet / 10;\n}\n\nmsg.payload = payload;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 600,
+        "wires": [
+            [
+                "f1ca794d27d35924",
+                "101030f32f3c84a7"
             ]
         ]
     },
@@ -439,7 +668,7 @@
         "enableGlobalContextStore": false
     },
     {
-        "id": "1450c5c24e2cb0c8",
+        "id": "ea8c60ddb7468eda",
         "type": "global-config",
         "env": [],
         "modules": {
