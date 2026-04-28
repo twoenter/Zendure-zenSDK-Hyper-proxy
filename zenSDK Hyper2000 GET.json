@@ -8,6 +8,50 @@
         "env": []
     },
     {
+        "id": "cff6a801c3907514",
+        "type": "group",
+        "z": "58e0b7bd92defb71",
+        "name": "Hyper2000 algemene gegevens",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "57392f881be3c01e",
+            "3ac70368460cd9aa",
+            "ad67785dd8bb1447",
+            "4e33f1f6b9870a4a",
+            "b64339baae721c8c",
+            "cc9f10273e08d739",
+            "7dc57111d373bfd8",
+            "06a8d7c35a6390c2",
+            "9cd7777bddaba90f",
+            "2ad0e6a989f511db",
+            "d036abab0db6aa25",
+            "fe66427c9d4a5590",
+            "b3d083bbfe1c0438",
+            "6fac55451ee7f017",
+            "e338282abee0e665",
+            "43e78c7da3c77904",
+            "5d8f98be4bab6ea3",
+            "637a8e664afd40fe",
+            "180fe6b95663c522",
+            "4256931f23bd9057",
+            "184683c2490891d8",
+            "81fb8f3a497a7dab",
+            "8ed1a2b9b135583b",
+            "b6a2142d7c27945e",
+            "f1feb714d27edd79",
+            "ddd6def35d058ccc",
+            "95bf69a0e1932fbc",
+            "6f369d94c51762bd",
+            "d87832f17f120ed0"
+        ],
+        "x": 214,
+        "y": 59,
+        "w": 1312,
+        "h": 442
+    },
+    {
         "id": "38e52d9a883abc58",
         "type": "http in",
         "z": "58e0b7bd92defb71",
@@ -29,6 +73,7 @@
         "id": "57392f881be3c01e",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "packNum",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -73,6 +118,7 @@
         "id": "3ac70368460cd9aa",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "hypertmp",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -118,7 +164,7 @@
         "type": "function",
         "z": "58e0b7bd92defb71",
         "name": "json response",
-        "func": "\nmsg.payload = {\n    sn: msg.payload.sn,\n    version: 2,\n    product: msg.payload.product,\n    properties: {\n        packNum: msg.payload.packNum,\n        hyperTmp: (msg.payload.hyperTmp *10) + 2731,\n        batVolt: (msg.payload.batvolt * 100),\n        chargeMaxLimit: msg.payload.chargeMaxLimit,\n        inverseMaxPower: msg.payload.inverseMaxPower,\n        socLimit: msg.payload.socLimit,\n        acMode: msg.payload.acMode,\n        packInputPower: msg.payload.packInputPower,\n        outputPackPower: msg.payload.packOutputPower,\n        rssi: msg.payload.rssi,\n        gridInputPower: msg.payload.gridInputPower,\n        outputHomePower: msg.payload.outputHomePower,\n        socStatus: msg.payload.socStatus,\n        inputLimit: msg.payload.inputLimit,\n        outputLimit: msg.payload.outputLimit,\n        electricLevel: msg.payload.electricLevel,\n        remainOutTime: msg.payload.remainOutTime,\n        minSoc: msg.payload.minSoc*10,\n        socSet: msg.payload.socSet*10,\n        is_error: msg.payload.is_error,\n        gridOffPower: msg.payload.gridOffPower,\n        solarInputPower: msg.payload.solarInputPower,\n        pvStatus: msg.payload.pvStatus,\n        pass: msg.payload.pass\n    },\n    packData: [\n        {\n            \"sn\": msg.payload.sn_1,\n            \"socLevel\": msg.payload.soc_1,\n            \"packType\": msg.payload.packType_1,\n            \"power\": msg.payload.power_1,\n            \"state\": msg.payload.state_1,\n            \"maxTemp\": msg.payload.maxTemp_1\n        },\n        {\n            \"sn\": msg.payload.sn_2,\n            \"socLevel\": msg.payload.soc_2,\n            \"packType\": msg.payload.packType_2,\n            \"power\": msg.payload.power_2,\n            \"state\": msg.payload.state_2,\n            \"maxTemp\": msg.payload.maxTemp_2\n        }\n    ]\n};\n\nmsg.statusCode = 200;\nmsg.headers = {\n    \"Content-Type\": \"application/json\"\n};\n\nreturn msg;",
+        "func": "\nmsg.payload = {\n    sn: msg.payload.sn,\n    version: 2,\n    product: msg.payload.product,\n    properties: {\n        packNum: msg.payload.packNum,\n        hyperTmp: (msg.payload.hyperTmp *10) + 2731,\n        BatVolt: (msg.payload.batVolt * 100),\n        chargeMaxLimit: msg.payload.chargeMaxLimit,\n        inverseMaxPower: msg.payload.inverseMaxPower,\n        socLimit: msg.payload.socLimit,\n        acMode: msg.payload.acMode,\n        packInputPower: msg.payload.packInputPower,\n        outputPackPower: msg.payload.packOutputPower,\n        rssi: msg.payload.rssi,\n        gridInputPower: msg.payload.gridInputPower,\n        outputHomePower: msg.payload.outputHomePower,\n        socStatus: msg.payload.socStatus,\n        inputLimit: msg.payload.inputLimit,\n        outputLimit: msg.payload.outputLimit,\n        electricLevel: msg.payload.electricLevel,\n        remainOutTime: msg.payload.remainOutTime,\n        minSoc: msg.payload.minSoc*10,\n        socSet: msg.payload.socSet*10,\n        is_error: msg.payload.is_error,\n        gridOffPower: msg.payload.gridOffPower,\n        solarInputPower: msg.payload.solarInputPower,\n        pvStatus: msg.payload.pvStatus,\n        pass: msg.payload.pass\n    },\n\n    packData: [\n        msg.payload.batterij_1,\n        msg.payload.batterij_2,\n        msg.payload.batterij_3,\n        msg.payload.batterij_4,\n        msg.payload.batterij_5,\n        msg.payload.batterij_6\n    ].filter(Boolean) // filter alleen geldigde batterijen eruit\n};\n\nmsg.statusCode = 200;\nmsg.headers = {\n    \"Content-Type\": \"application/json\"\n};\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -126,7 +172,7 @@
         "finalize": "",
         "libs": [],
         "x": 300,
-        "y": 1220,
+        "y": 1420,
         "wires": [
             [
                 "ade27851c36c33fa",
@@ -138,6 +184,7 @@
         "id": "ad67785dd8bb1447",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "batVolt",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -150,9 +197,9 @@
         "blockInputOverrides": true,
         "outputProperties": [
             {
-                "property": "payload.batvolt",
+                "property": "payload.batVolt",
                 "propertyType": "msg",
-                "value": "string",
+                "value": "number",
                 "valueType": "entityState"
             },
             {
@@ -185,8 +232,8 @@
         "name": "",
         "statusCode": "200",
         "headers": {},
-        "x": 460,
-        "y": 1220,
+        "x": 520,
+        "y": 1420,
         "wires": []
     },
     {
@@ -279,7 +326,7 @@
         "override_payload": "msg",
         "entity_location": "data",
         "override_data": "msg",
-        "x": 580,
+        "x": 740,
         "y": 720,
         "wires": [
             [
@@ -291,7 +338,7 @@
         "id": "ed1bfe467c22318a",
         "type": "change",
         "z": "58e0b7bd92defb71",
-        "name": "",
+        "name": "Serialnumber en capaciteit",
         "rules": [
             {
                 "t": "set",
@@ -313,7 +360,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 320,
+        "x": 360,
         "y": 680,
         "wires": [
             [
@@ -325,7 +372,7 @@
         "id": "e1d68295e031c9f4",
         "type": "change",
         "z": "58e0b7bd92defb71",
-        "name": "",
+        "name": "Serialnumber en capaciteit",
         "rules": [
             {
                 "t": "set",
@@ -347,7 +394,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 580,
+        "x": 780,
         "y": 680,
         "wires": [
             [
@@ -361,7 +408,7 @@
         "z": "58e0b7bd92defb71",
         "name": "Batterij 2",
         "info": "",
-        "x": 560,
+        "x": 720,
         "y": 640,
         "wires": []
     },
@@ -369,6 +416,7 @@
         "id": "4e33f1f6b9870a4a",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "chargeMaxLimit",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -413,6 +461,7 @@
         "id": "b64339baae721c8c",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "inverseMaxPower",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -457,6 +506,7 @@
         "id": "cc9f10273e08d739",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "socLimit",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -501,6 +551,7 @@
         "id": "7dc57111d373bfd8",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "acMode",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -545,6 +596,7 @@
         "id": "06a8d7c35a6390c2",
         "type": "change",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "acMode",
         "rules": [
             {
@@ -659,7 +711,7 @@
         "override_payload": "msg",
         "entity_location": "data",
         "override_data": "msg",
-        "x": 580,
+        "x": 740,
         "y": 780,
         "wires": [
             [
@@ -747,7 +799,7 @@
         "override_payload": "msg",
         "entity_location": "data",
         "override_data": "msg",
-        "x": 580,
+        "x": 740,
         "y": 840,
         "wires": [
             [
@@ -759,6 +811,7 @@
         "id": "9cd7777bddaba90f",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "packInputPower",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -803,6 +856,7 @@
         "id": "2ad0e6a989f511db",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "packOutputPower",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -847,6 +901,7 @@
         "id": "d036abab0db6aa25",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "rssi",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -903,7 +958,7 @@
         "blockInputOverrides": true,
         "outputProperties": [
             {
-                "property": "payload.maxtemp_1",
+                "property": "payload.maxTemp_1",
                 "propertyType": "msg",
                 "value": "number",
                 "valueType": "entityState"
@@ -927,7 +982,7 @@
         "y": 900,
         "wires": [
             [
-                "e1d68295e031c9f4"
+                "8377103d9e3416cb"
             ]
         ]
     },
@@ -947,7 +1002,7 @@
         "blockInputOverrides": true,
         "outputProperties": [
             {
-                "property": "payload.maxtemp_2",
+                "property": "payload.maxTemp_2",
                 "propertyType": "msg",
                 "value": "number",
                 "valueType": "entityState"
@@ -967,11 +1022,11 @@
         "override_payload": "msg",
         "entity_location": "data",
         "override_data": "msg",
-        "x": 590,
+        "x": 750,
         "y": 900,
         "wires": [
             [
-                "697084ad1272aae6"
+                "8425939637b31774"
             ]
         ]
     },
@@ -979,6 +1034,7 @@
         "id": "fe66427c9d4a5590",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "manager_power",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -1023,6 +1079,7 @@
         "id": "b3d083bbfe1c0438",
         "type": "function",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "power +/-",
         "func": "const value = Number(msg.payload.manager_power) || 0;  \n\nlet payload = msg.payload; // bestaande payload onthouden\n\nif (value < 0) {\n    payload.gridInputPower = value *-1;\n    payload.outputHomePower = 0;\n} else {\n    payload.outputHomePower = value;\n    payload.gridInputPower = 0;\n}\n\nmsg.payload = payload;\nreturn msg;",
         "outputs": 1,
@@ -1043,6 +1100,7 @@
         "id": "6fac55451ee7f017",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "socStatus",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -1087,6 +1145,7 @@
         "id": "e338282abee0e665",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "outputLimit",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -1131,6 +1190,7 @@
         "id": "43e78c7da3c77904",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "inputLimit",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -1175,6 +1235,7 @@
         "id": "5d8f98be4bab6ea3",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "electricLevel",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -1219,6 +1280,7 @@
         "id": "637a8e664afd40fe",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "remainOutTime",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -1263,6 +1325,7 @@
         "id": "180fe6b95663c522",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "minSoc",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -1307,6 +1370,7 @@
         "id": "4256931f23bd9057",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "socSet",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -1351,6 +1415,7 @@
         "id": "184683c2490891d8",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "is_error",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -1404,7 +1469,7 @@
         "finalize": "",
         "libs": [],
         "x": 300,
-        "y": 1160,
+        "y": 1360,
         "wires": [
             [
                 "a55dd61a27b50ded"
@@ -1428,13 +1493,14 @@
         "name": "Vul hier het serial number in van je Hyper",
         "info": "",
         "x": 380,
-        "y": 1120,
+        "y": 1320,
         "wires": []
     },
     {
         "id": "81fb8f3a497a7dab",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "gridOffMode",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -1479,6 +1545,7 @@
         "id": "8ed1a2b9b135583b",
         "type": "change",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "gridOffMode",
         "rules": [
             {
@@ -1526,6 +1593,7 @@
         "id": "b6a2142d7c27945e",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "gridOffPower",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -1578,31 +1646,15 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 460,
-        "y": 1280,
-        "wires": []
-    },
-    {
-        "id": "bfb86a7b348d3f1e",
-        "type": "debug",
-        "z": "58e0b7bd92defb71",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload.gridOffPower",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1180,
-        "y": 620,
+        "x": 520,
+        "y": 1480,
         "wires": []
     },
     {
         "id": "f1feb714d27edd79",
         "type": "function",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "gridOffPower",
         "func": "const value = Number(msg.payload.gridOffPower) || 0;\n\nlet payload = msg.payload; // bestaande payload onthouden\n\nif (isNaN(value)) {\n    payload.gridOffPower = 0\n} else {\n    payload.gridOffPower = value;\n}\n\nmsg.payload = payload;\nreturn msg;",
         "outputs": 1,
@@ -1623,6 +1675,7 @@
         "id": "ddd6def35d058ccc",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "solarInputPower",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -1667,6 +1720,7 @@
         "id": "95bf69a0e1932fbc",
         "type": "function",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "pvStatus",
         "func": "const value = msg.payload.solarInputPower\n\nlet payload = msg.payload; // bestaande payload onthouden\n\nif (value > 0) {\n    payload.pvStatus = 1\n} else {\n    payload.pvStatus = 0;\n}\n\nmsg.payload = payload;\nreturn msg;",
         "outputs": 1,
@@ -1703,12 +1757,13 @@
         "id": "6f369d94c51762bd",
         "type": "link out",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "Hyper gegevens gereed",
         "mode": "link",
         "links": [
             "f127d828050a4d4a"
         ],
-        "x": 1375,
+        "x": 1485,
         "y": 460,
         "wires": []
     },
@@ -1716,13 +1771,13 @@
         "id": "697084ad1272aae6",
         "type": "link out",
         "z": "58e0b7bd92defb71",
-        "name": "Batterijgegevens gereed",
+        "name": "Batterij 2 uit",
         "mode": "link",
         "links": [
             "f04b720706a73b29"
         ],
-        "x": 785,
-        "y": 900,
+        "x": 885,
+        "y": 1200,
         "wires": []
     },
     {
@@ -1731,10 +1786,11 @@
         "z": "58e0b7bd92defb71",
         "name": "Afronden update",
         "links": [
-            "697084ad1272aae6"
+            "697084ad1272aae6",
+            "d69d1e7c9bafa56e"
         ],
         "x": 125,
-        "y": 1160,
+        "y": 1360,
         "wires": [
             [
                 "83ef6c8e3af38289"
@@ -1745,6 +1801,7 @@
         "id": "d87832f17f120ed0",
         "type": "api-current-state",
         "z": "58e0b7bd92defb71",
+        "g": "cff6a801c3907514",
         "name": "pass",
         "server": "a27a305a.5ed34",
         "version": 3,
@@ -1786,6 +1843,1785 @@
         ]
     },
     {
+        "id": "f4dadad41dbbf369",
+        "type": "function",
+        "z": "58e0b7bd92defb71",
+        "name": "Aanpassen batVolt als 0",
+        "func": "const value = msg.payload.batVolt\n\nlet payload = msg.payload; // bestaande payload onthouden\n\nif (value == 0.0) {\n    payload.batVolt = msg.payload.totalVol;\n} else {\n    payload.batVolt = value;\n}\n\nmsg.payload = payload;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 1140,
+        "wires": [
+            [
+                "6a0ea2c7cadffe12"
+            ]
+        ]
+    },
+    {
+        "id": "70118095288a2b48",
+        "type": "link out",
+        "z": "58e0b7bd92defb71",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "be3651ed867c3704"
+        ],
+        "x": 515,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "be3651ed867c3704",
+        "type": "link in",
+        "z": "58e0b7bd92defb71",
+        "name": "batterij 2 in",
+        "links": [
+            "70118095288a2b48"
+        ],
+        "x": 605,
+        "y": 680,
+        "wires": [
+            [
+                "e1d68295e031c9f4"
+            ]
+        ]
+    },
+    {
+        "id": "bc4b614de584bd66",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 3 SOC",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.batterij3_soc_level",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.soc_3",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1140,
+        "y": 720,
+        "wires": [
+            [
+                "68e8c98522ca5681"
+            ]
+        ]
+    },
+    {
+        "id": "7290a0d6ae55496e",
+        "type": "change",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Serialnumber en capaciteit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.sn_3",
+                "pt": "msg",
+                "to": "xxx",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.packType_3",
+                "pt": "msg",
+                "to": "70",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1180,
+        "y": 680,
+        "wires": [
+            [
+                "bc4b614de584bd66"
+            ]
+        ]
+    },
+    {
+        "id": "a4352ef6ac7056d9",
+        "type": "comment",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 3",
+        "info": "",
+        "x": 1120,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "68e8c98522ca5681",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 3 power",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.batterij3_power",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.power_3",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1140,
+        "y": 780,
+        "wires": [
+            [
+                "fda9ef456ace1855"
+            ]
+        ]
+    },
+    {
+        "id": "fda9ef456ace1855",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 3 state",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.batterij 3_state",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.state_3",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1140,
+        "y": 840,
+        "wires": [
+            [
+                "1fd9eb7051d61f9e"
+            ]
+        ]
+    },
+    {
+        "id": "1fd9eb7051d61f9e",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 3 maxtemp",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.batterij 3_max_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.maxTemp_3",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1150,
+        "y": 900,
+        "wires": [
+            [
+                "4238d36abc21f08f"
+            ]
+        ]
+    },
+    {
+        "id": "6cf888d19ce692e0",
+        "type": "link out",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 3 uit",
+        "mode": "link",
+        "links": [
+            "accff5464dc204ba"
+        ],
+        "x": 1285,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "0d63d6020b2c4ac1",
+        "type": "link in",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "batterij 3 in",
+        "links": [],
+        "x": 1005,
+        "y": 680,
+        "wires": [
+            [
+                "7290a0d6ae55496e"
+            ]
+        ]
+    },
+    {
+        "id": "754b3ad82a045642",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 4 SOC",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.batterij4_soc_level",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.soc_4",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1520,
+        "y": 720,
+        "wires": [
+            [
+                "7d3d1c7af07209b9"
+            ]
+        ]
+    },
+    {
+        "id": "98c0824be30b06ac",
+        "type": "change",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Serialnumber en capaciteit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.sn_4",
+                "pt": "msg",
+                "to": "xxx",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.packType_4",
+                "pt": "msg",
+                "to": "70",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1560,
+        "y": 680,
+        "wires": [
+            [
+                "754b3ad82a045642"
+            ]
+        ]
+    },
+    {
+        "id": "67291089acd76ecd",
+        "type": "comment",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 4",
+        "info": "",
+        "x": 1500,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "7d3d1c7af07209b9",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 4 power",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.batterij4_power",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.power_4",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1520,
+        "y": 780,
+        "wires": [
+            [
+                "4ce52ee57c4b71de"
+            ]
+        ]
+    },
+    {
+        "id": "4ce52ee57c4b71de",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 4 state",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.batterij 4_state",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.state_4",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1520,
+        "y": 840,
+        "wires": [
+            [
+                "4583658d3b5226c5"
+            ]
+        ]
+    },
+    {
+        "id": "4583658d3b5226c5",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 4 maxtemp",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.batterij 4_max_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.maxTemp_4",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1530,
+        "y": 900,
+        "wires": [
+            [
+                "4b04bf1cc077ceb2"
+            ]
+        ]
+    },
+    {
+        "id": "ced51474681a4e86",
+        "type": "link out",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 4 uit",
+        "mode": "link",
+        "links": [
+            "68745c391435432f"
+        ],
+        "x": 1665,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "accff5464dc204ba",
+        "type": "link in",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "batterij 4 in",
+        "links": [
+            "6cf888d19ce692e0"
+        ],
+        "x": 1385,
+        "y": 680,
+        "wires": [
+            [
+                "98c0824be30b06ac"
+            ]
+        ]
+    },
+    {
+        "id": "db2a45c6971c36e6",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 5 SOC",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.batterij5_soc_level",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.soc_5",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1900,
+        "y": 720,
+        "wires": [
+            [
+                "22d9be6f109126f2"
+            ]
+        ]
+    },
+    {
+        "id": "10c02fe1f5a7b0cc",
+        "type": "change",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Serialnumber en capaciteit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.sn_5",
+                "pt": "msg",
+                "to": "xxx",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.packType_5",
+                "pt": "msg",
+                "to": "70",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1940,
+        "y": 680,
+        "wires": [
+            [
+                "db2a45c6971c36e6"
+            ]
+        ]
+    },
+    {
+        "id": "1526cd800d2ad50b",
+        "type": "comment",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 5",
+        "info": "",
+        "x": 1880,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "22d9be6f109126f2",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 5 power",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.batterij5_power",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.power_5",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1900,
+        "y": 780,
+        "wires": [
+            [
+                "947a1ce831ea82a7"
+            ]
+        ]
+    },
+    {
+        "id": "947a1ce831ea82a7",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 5 state",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.batterij 5_state",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.state_5",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1900,
+        "y": 840,
+        "wires": [
+            [
+                "742428fecf0a10fa"
+            ]
+        ]
+    },
+    {
+        "id": "742428fecf0a10fa",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 5 maxtemp",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.batterij 5_max_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.maxTemp_5",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1910,
+        "y": 900,
+        "wires": [
+            [
+                "9d847ce2200c684e"
+            ]
+        ]
+    },
+    {
+        "id": "d1370c3fb2011aa9",
+        "type": "link out",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 5 uit",
+        "mode": "link",
+        "links": [
+            "d8b091f5f8e63e32"
+        ],
+        "x": 2045,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "68745c391435432f",
+        "type": "link in",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "batterij 5 in",
+        "links": [
+            "ced51474681a4e86"
+        ],
+        "x": 1765,
+        "y": 680,
+        "wires": [
+            [
+                "10c02fe1f5a7b0cc"
+            ]
+        ]
+    },
+    {
+        "id": "6e80036823832b9f",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 6 SOC",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.batterij6_soc_level",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.soc_6",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 2260,
+        "y": 720,
+        "wires": [
+            [
+                "a851b62acc542979"
+            ]
+        ]
+    },
+    {
+        "id": "d1f57b9101de5f36",
+        "type": "change",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Serialnumber en capaciteit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.sn_6",
+                "pt": "msg",
+                "to": "xxx",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.packType_6",
+                "pt": "msg",
+                "to": "70",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2300,
+        "y": 680,
+        "wires": [
+            [
+                "6e80036823832b9f"
+            ]
+        ]
+    },
+    {
+        "id": "56b5b8594711d5f1",
+        "type": "comment",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 6",
+        "info": "",
+        "x": 2240,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "a851b62acc542979",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 6 power",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.batterij6_power",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.power_6",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 2260,
+        "y": 780,
+        "wires": [
+            [
+                "81162b62a72efd11"
+            ]
+        ]
+    },
+    {
+        "id": "81162b62a72efd11",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 6 state",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.batterij 6_state",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.state_6",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 2260,
+        "y": 840,
+        "wires": [
+            [
+                "2c0f55576caca8eb"
+            ]
+        ]
+    },
+    {
+        "id": "2c0f55576caca8eb",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 6 maxtemp",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.batterij 6_max_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.maxTemp_6",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 2270,
+        "y": 900,
+        "wires": [
+            [
+                "402bcb57a24bf861"
+            ]
+        ]
+    },
+    {
+        "id": "d69d1e7c9bafa56e",
+        "type": "link out",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 6 uit",
+        "mode": "link",
+        "links": [
+            "f04b720706a73b29"
+        ],
+        "x": 2415,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "d8b091f5f8e63e32",
+        "type": "link in",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "batterij 6 in",
+        "links": [
+            "d1370c3fb2011aa9"
+        ],
+        "x": 2125,
+        "y": 680,
+        "wires": [
+            [
+                "d1f57b9101de5f36"
+            ]
+        ]
+    },
+    {
+        "id": "6a0ea2c7cadffe12",
+        "type": "function",
+        "z": "58e0b7bd92defb71",
+        "name": "Batterij 1",
+        "func": "\nlet payload = msg.payload; // bestaande payload onthouden\n\n\nmsg.payload.batterij_1 = {\n            \"sn\": msg.payload.sn_1,\n            \"socLevel\": msg.payload.soc_1,\n            \"packType\": msg.payload.packType_1,\n            \"power\": msg.payload.power_1,\n            \"state\": msg.payload.state_1,\n            \"maxTemp\": (msg.payload.maxTemp_1 * 10) + 2731,\n            \"minVol\": msg.payload.minVol_1,\n            \"maxVol\": msg.payload.maxVol_1\n};\n\nmsg.payload = payload;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 1200,
+        "wires": [
+            [
+                "70118095288a2b48"
+            ]
+        ]
+    },
+    {
+        "id": "efb876c2ce3cf943",
+        "type": "function",
+        "z": "58e0b7bd92defb71",
+        "name": "Batterij 2",
+        "func": "\nlet payload = msg.payload; // bestaande payload onthouden\n\n\nmsg.payload.batterij_2 = {\n            \"sn\": msg.payload.sn_2,\n            \"socLevel\": msg.payload.soc_2,\n            \"packType\": msg.payload.packType_2,\n            \"power\": msg.payload.power_2,\n            \"state\": msg.payload.state_2,\n            \"maxTemp\": (msg.payload.maxTemp_2 * 10) + 2731,\n            \"minVol\": msg.payload.minVol_2,\n            \"maxVol\": msg.payload.maxVol_2\n        };\n\nmsg.payload = payload;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 1200,
+        "wires": [
+            [
+                "697084ad1272aae6"
+            ]
+        ]
+    },
+    {
+        "id": "b8e8c862abe2d505",
+        "type": "function",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 3",
+        "func": "\nlet payload = msg.payload; // bestaande payload onthouden\n\n\nmsg.payload.batterij_3 = {\n            \"sn\": msg.payload.sn_3,\n            \"socLevel\": msg.payload.soc_3,\n            \"packType\": msg.payload.packType_3,\n            \"power\": msg.payload.power_3,\n            \"state\": msg.payload.state_3,\n            \"maxTemp\": (msg.payload.maxTemp_3 * 10) + 2731,\n            \"minVol\": msg.payload.minVol_3,\n            \"maxVol\": msg.payload.maxVol_3\n        };\n\nmsg.payload = payload;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1120,
+        "y": 1200,
+        "wires": [
+            [
+                "6cf888d19ce692e0"
+            ]
+        ]
+    },
+    {
+        "id": "f70cd3417025312d",
+        "type": "function",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 4",
+        "func": "\nlet payload = msg.payload; // bestaande payload onthouden\n\n\nmsg.payload.batterij_4 = {\n            \"sn\": msg.payload.sn_4,\n            \"socLevel\": msg.payload.soc_4,\n            \"packType\": msg.payload.packType_4,\n            \"power\": msg.payload.power_4,\n            \"state\": msg.payload.state_4,\n            \"maxTemp\": (msg.payload.maxTemp_4 * 10) + 2731,\n            \"minVol\": msg.payload.minVol_4,\n            \"maxVol\": msg.payload.maxVol_4\n        };\n\nmsg.payload = payload;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1500,
+        "y": 1200,
+        "wires": [
+            [
+                "ced51474681a4e86"
+            ]
+        ]
+    },
+    {
+        "id": "4dfd6740ad613177",
+        "type": "function",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 5",
+        "func": "\nlet payload = msg.payload; // bestaande payload onthouden\n\n\nmsg.payload.batterij_5 = {\n            \"sn\": msg.payload.sn_5,\n            \"socLevel\": msg.payload.soc_5,\n            \"packType\": msg.payload.packType_5,\n            \"power\": msg.payload.power_5,\n            \"state\": msg.payload.state_5,\n            \"maxTemp\": (msg.payload.maxTemp_5 * 10) + 2731,\n            \"minVol\": msg.payload.minVol_5,\n            \"maxVol\": msg.payload.maxVol_5\n        };\n\nmsg.payload = payload;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1880,
+        "y": 1200,
+        "wires": [
+            [
+                "d1370c3fb2011aa9"
+            ]
+        ]
+    },
+    {
+        "id": "82bf22eaf5d621ce",
+        "type": "function",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 6",
+        "func": "\nlet payload = msg.payload; // bestaande payload onthouden\n\n\nmsg.payload.batterij_6 = {\n            \"sn\": msg.payload.sn_6,\n            \"socLevel\": msg.payload.soc_6,\n            \"packType\": msg.payload.packType_6,\n            \"power\": msg.payload.power_6,\n            \"state\": msg.payload.state_6,\n            \"maxTemp\": (msg.payload.maxTemp_6 * 10) + 2731,\n            \"minVol\": msg.payload.minVol_6,\n            \"maxVol\": msg.payload.maxVol_6\n        };\n\nmsg.payload = payload;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2240,
+        "y": 1200,
+        "wires": [
+            [
+                "d69d1e7c9bafa56e"
+            ]
+        ]
+    },
+    {
+        "id": "1edfd067799d6ba1",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "name": "Batterij 1 minVol",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.co4fhmhdm515940_min_vol",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.minVol_1",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 320,
+        "y": 1020,
+        "wires": [
+            [
+                "bdd0e2514d117ac5"
+            ]
+        ]
+    },
+    {
+        "id": "bdd0e2514d117ac5",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "name": "Batterij 1 maxVol",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.co4fhmhdm515940_max_vol",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.maxVol_1",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 330,
+        "y": 1080,
+        "wires": [
+            [
+                "f4dadad41dbbf369"
+            ]
+        ]
+    },
+    {
+        "id": "8425939637b31774",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "name": "Batterij 2 minVol",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.co4fhmhdm514278_min_vol",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.minVol_2",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 740,
+        "y": 960,
+        "wires": [
+            [
+                "d6f1ec04c63a47dd"
+            ]
+        ]
+    },
+    {
+        "id": "8377103d9e3416cb",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "name": "totalVol",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.co4fhmhdm515940_total_vol",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.totalVol",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 300,
+        "y": 960,
+        "wires": [
+            [
+                "1edfd067799d6ba1"
+            ]
+        ]
+    },
+    {
+        "id": "d6f1ec04c63a47dd",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "name": "Batterij 2 maxVol",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.co4fhmhdm514278_max_vol",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.maxVol_2",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 750,
+        "y": 1020,
+        "wires": [
+            [
+                "efb876c2ce3cf943"
+            ]
+        ]
+    },
+    {
+        "id": "4238d36abc21f08f",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 3 minVol",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.minVol_3",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1140,
+        "y": 960,
+        "wires": [
+            [
+                "665f0a190374de48"
+            ]
+        ]
+    },
+    {
+        "id": "665f0a190374de48",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 3 maxVol",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.maxVol_3",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1150,
+        "y": 1020,
+        "wires": [
+            [
+                "b8e8c862abe2d505"
+            ]
+        ]
+    },
+    {
+        "id": "4b04bf1cc077ceb2",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 4 minVol",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.minVol_4",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1520,
+        "y": 960,
+        "wires": [
+            [
+                "33407e1e1d8342b6"
+            ]
+        ]
+    },
+    {
+        "id": "33407e1e1d8342b6",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 4 maxVol",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.maxVol_4",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1530,
+        "y": 1020,
+        "wires": [
+            [
+                "f70cd3417025312d"
+            ]
+        ]
+    },
+    {
+        "id": "9d847ce2200c684e",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 5 minVol",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.minVol_5",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1900,
+        "y": 960,
+        "wires": [
+            [
+                "72d9b3926cc60aaa"
+            ]
+        ]
+    },
+    {
+        "id": "72d9b3926cc60aaa",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 5 maxVol",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.maxVol_5",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1910,
+        "y": 1020,
+        "wires": [
+            [
+                "4dfd6740ad613177"
+            ]
+        ]
+    },
+    {
+        "id": "402bcb57a24bf861",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 6 minVol",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.minVol_6",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 2260,
+        "y": 960,
+        "wires": [
+            [
+                "65628b57d1306b45"
+            ]
+        ]
+    },
+    {
+        "id": "65628b57d1306b45",
+        "type": "api-current-state",
+        "z": "58e0b7bd92defb71",
+        "d": true,
+        "name": "Batterij 6 maxVol",
+        "server": "a27a305a.5ed34",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload.maxVol_6",
+                "propertyType": "msg",
+                "value": "number",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 2270,
+        "y": 1020,
+        "wires": [
+            [
+                "82bf22eaf5d621ce"
+            ]
+        ]
+    },
+    {
         "id": "a27a305a.5ed34",
         "type": "server",
         "name": "Home Assistant",
@@ -1800,7 +3636,7 @@
         "enableGlobalContextStore": false
     },
     {
-        "id": "cf0676824d01f2c4",
+        "id": "a755e7114e643af1",
         "type": "global-config",
         "env": [],
         "modules": {
