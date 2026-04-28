@@ -36,13 +36,14 @@ Installeer de [Node-Red Home-Assistant addon](https://github.com/hassio-addons/a
 - Importeer in een nieuwe Node-red flow  de [zenSDK Hyper2000 GET flow](https://github.com/twoenter/Zendure-zenSDK-Hyper-proxy/blob/main/zenSDK%20Hyper2000%20GET). Deze Node-red flow zorgt ervoor dat de informatie uit de Hyper naar de zendure entiteiten vertaald wordt voor de Gielz automatisering en dashboard.
 - Importeer in een nieuwe Node-red flow de [zenSDK Hyper2000 POST flow](https://github.com/twoenter/Zendure-zenSDK-Hyper-proxy/blob/main/zenSDK%20Hyper2000%20POST.json). Deze Node-red flow zorgt ervoor dat de waarden die de Gielz automatisering bepaald ook werkelijk naar de Hyper gecommuniceerd worden.    
 ### Pas in de GET flow het volgende aan:
- 1. het aantal batterijen: kopieer de nodes van batterij 2 (soc, power, state en maxTemp) door naar 3 en verder, zorg dat ze op dezelfde manier verbonden worden. De link node komt als laatste aan de laatste batterij
-  <img height="200" alt="image" src="https://github.com/user-attachments/assets/01f6f2af-3429-4169-a542-1229d60e4faa" />
+ 1. het aantal batterijen: verbind het juiste aantal batterijen door middel van de link nodes. Batterij 1 out link gaat naar Batterij 2 in en zo verder naar mate het aantal batterijen. Enable de nodes van de extra batterijen. De laatse out-node van de laatste batterij verbind je met de in-node 'Afronden update'. De volgorde in node-red hoeft niet te matchen met de volgorde in de stapel, dit kun je corrigeren in het gielz dashboard.
+  <img width="1322" height="736" alt="image" src="https://github.com/user-attachments/assets/99ae2c12-bcb9-453d-90d2-8baaa6345896" />
+
   
  2. de serienummers van de batterijen en packType: Het serienummer wordt gebruikt door Gielz om onderscheid te maken tussen de batterijen en ze in de juiste gewenste volgorde te plaatsen. packType is de capaciteit van de accu, voor een AB2000s/x gebruik je 70, wat 1,92kWh is.
   <img height="200" alt="image" src="https://github.com/user-attachments/assets/24fa01a3-dc5d-4346-a1bf-5769a88259d7" />
   
- 3. Verwijs in alle blauwe nodes van de batterijen naar de juiste entiteiten. De Zendure-HA integratie gebruikt standaard ``sensor.<<serienummer accu>>_power`` etc. Plak het juiste serienummer ertussen en het zal werken.
+ 3. Verwijs in alle blauwe nodes van de batterijen naar de juiste entiteiten. De Zendure-HA integratie gebruikt standaard ``sensor.<<serienummer accu>>_power`` etc. Plak het juiste serienummer ertussen en het zal werken zolang je de standaard namen niet aangepast hebt.
   <img height="200" alt="image" src="https://github.com/user-attachments/assets/0328fe08-e63c-4524-a821-fc7db37b9f0c" />
 
   4. Het serienummer van de Hyper
