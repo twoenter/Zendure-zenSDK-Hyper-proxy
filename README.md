@@ -58,9 +58,12 @@ Installeer de [Node-Red Home-Assistant addon](https://github.com/hassio-addons/a
 
 ## Configureer gielz (2)
 - Stel in het gielz configuratie dashboard het ip-adres in van de Zendure op ``localhost:1880/endpoint``. Dit is het ip-adres van node red waardoor er connectie gelegd wordt tussen home assistant en node red. De twee beginnen over en weer te communiceren.
-  <img width="389" height="101" alt="image" src="https://github.com/user-attachments/assets/0e43cae9-3fdc-4c07-b581-a16a5e831297" />
+  <img width="416" height="150" alt="image" src="https://github.com/user-attachments/assets/7a99c900-75ce-4c2e-b85e-9c67c198581b" />
 - Stel de juiste oplaad en ontlaad maximalen in, passend bij jouw situatie. 
 
 ## Gereed
 De communicatie tussen Home Assistant en de Hyper2000 verloopt nu via Node-Red om gebruik te kunnen maken van de Gielz automatisering. Natuurlijk kun je altijd zelf de Hyper blijven aansturen, vergeet dan niet de gielz automatisering uit te schakelen, zodat er geen conflicterende opdrachten verzonden worden.
+
+## Tips
+In mijn ervaring is het beter om de rest ``scan_interval`` van de gielz automatisering van 1 naar 5 te verhogen, van veel verkeer naar de Hyper2000 schiet het nog wel eens in een freeze. Wanneer je een freeze ervaart, is de Hyper ogenschijnlijk nog online en bestuurbaar maar is dat in werkelijkheid niet. Commando's komen niet aan en worden niet uitgevoerd. Om een freeze te verhelpen kun je in de Fireson integratie klikken op Reset verbinding en/of de internetconnectie naar de Hyper even verbreken door in je router(app) even de verbinding naar de hyper te verbieden en na een aantal minuten weer toe te staan. 
   
