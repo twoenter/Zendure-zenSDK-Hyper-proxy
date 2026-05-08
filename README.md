@@ -33,7 +33,7 @@ Installeer de [Node-Red Home-Assistant addon](https://github.com/hassio-addons/a
 - Optioneel maar aanbevolen: importeer het [dashboard](https://github.com/Gielz1986/Zendure-HA-zenSDK/blob/main/README.nl.md#-optioneel-plug-n-play-dashboard)
 
 ## Configureer de zenSDK-Hyper-proxy
-- Importeer in een nieuwe Node-red flow  de [zenSDK Hyper2000 GET flow](https://github.com/twoenter/Zendure-zenSDK-Hyper-proxy/blob/main/zenSDK%20Hyper2000%20GET). Deze Node-red flow zorgt ervoor dat de informatie uit de Hyper naar de zendure entiteiten vertaald wordt voor de Gielz automatisering en dashboard.
+- Importeer in een nieuwe Node-red flow  de [zenSDK Hyper2000 GET flow](https://github.com/twoenter/Zendure-zenSDK-Hyper-proxy/blob/main/zenSDK%20Hyper2000%20GET.json). Deze Node-red flow zorgt ervoor dat de informatie uit de Hyper naar de zendure entiteiten vertaald wordt voor de Gielz automatisering en dashboard.
 - Importeer in een nieuwe Node-red flow de [zenSDK Hyper2000 POST flow](https://github.com/twoenter/Zendure-zenSDK-Hyper-proxy/blob/main/zenSDK%20Hyper2000%20POST.json). Deze Node-red flow zorgt ervoor dat de waarden die de Gielz automatisering bepaald ook werkelijk naar de Hyper gecommuniceerd worden.    
 ### Pas in de GET flow het volgende aan:
  1. het aantal batterijen: kopieer de nodes van batterij 2 (soc, power, state en maxTemp) door naar 3 en verder, zorg dat ze op dezelfde manier verbonden worden. De link node komt als laatste aan de laatste batterij
