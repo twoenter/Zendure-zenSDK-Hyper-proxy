@@ -33,7 +33,7 @@ Installeer de [Node-Red Home-Assistant addon](https://github.com/hassio-addons/a
 - Optioneel maar aanbevolen: importeer het [dashboard](https://github.com/Gielz1986/Zendure-HA-zenSDK/blob/main/README.nl.md#-optioneel-plug-n-play-dashboard)
 
 ## Configureer de zenSDK-Hyper-proxy
-- Importeer in een nieuwe Node-red flow  de [zenSDK Hyper2000 GET flow](https://github.com/twoenter/Zendure-zenSDK-Hyper-proxy/blob/main/zenSDK%20Hyper2000%20GET). Deze Node-red flow zorgt ervoor dat de informatie uit de Hyper naar de zendure entiteiten vertaald wordt voor de Gielz automatisering en dashboard.
+- Importeer in een nieuwe Node-red flow  de [zenSDK Hyper2000 GET flow](https://github.com/twoenter/Zendure-zenSDK-Hyper-proxy/blob/main/zenSDK%20Hyper2000%20GET.json). Deze Node-red flow zorgt ervoor dat de informatie uit de Hyper naar de zendure entiteiten vertaald wordt voor de Gielz automatisering en dashboard.
 - Importeer in een nieuwe Node-red flow de [zenSDK Hyper2000 POST flow](https://github.com/twoenter/Zendure-zenSDK-Hyper-proxy/blob/main/zenSDK%20Hyper2000%20POST.json). Deze Node-red flow zorgt ervoor dat de waarden die de Gielz automatisering bepaald ook werkelijk naar de Hyper gecommuniceerd worden.    
 ### Pas in de GET flow het volgende aan:
  1. het aantal batterijen: verbind het juiste aantal batterijen door middel van de link nodes. Batterij 1 out link gaat naar Batterij 2 in en zo verder naar mate het aantal batterijen. Enable de nodes van de extra batterijen. De laatse out-node van de laatste batterij verbind je met de in-node 'Afronden update'. De volgorde in node-red hoeft niet te matchen met de volgorde in de stapel, dit kun je corrigeren in het gielz dashboard.
