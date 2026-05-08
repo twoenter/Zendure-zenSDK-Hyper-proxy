@@ -6,6 +6,16 @@ Hoewel de Gielz-automatisering oorspronkelijk alleen werkt met zenSDK-ondersteun
 Meer controle, meer flexibiliteit, en vooral: geen afhankelijkheid meer van de Zendure cloud.
 <img height="600" alt="image" src="https://github.com/user-attachments/assets/7d226f51-b008-4aa8-8c29-70a129223f79" />
 
+##Compatibel met
+Getest en werkend met:
+- Hyper2000
+- - AC Firmware v2.1.14
+  - MASTER Firmware v2.1.30
+  - BMS Firmware (AB2000) v1.0.17
+  - ZenLink Master v3.1.14
+  - ZenLink Secondary v3.1.14
+- Zendure Home Assistant Integratie (Fireson) v1.2.5 [Zendure-HA integratie](https://github.com/Zendure/Zendure-HA)
+- Gielz automatisering en package v20260507 [Gielz-automatisering](https://github.com/Gielz1986/Zendure-HA-zenSDK)
 
 ## Instructies Zendure Hyper2000 integratie in Home Assistant
 - Installeer en configureer jouw Hyper2000 via de [Zendure-HA integratie](https://github.com/Zendure/Zendure-HA)
