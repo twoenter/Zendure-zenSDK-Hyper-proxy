@@ -6,6 +6,16 @@ Hoewel de Gielz-automatisering oorspronkelijk alleen werkt met zenSDK-ondersteun
 Meer controle, meer flexibiliteit, en vooral: geen afhankelijkheid meer van de Zendure cloud.
 <img height="600" alt="image" src="https://github.com/user-attachments/assets/7d226f51-b008-4aa8-8c29-70a129223f79" />
 
+## Compatibel met
+Getest en werkend met:
+- Hyper2000
+- - AC Firmware v2.1.14
+  - MASTER Firmware v2.1.30
+  - BMS Firmware (AB2000) v1.0.17
+  - ZenLink Master v3.1.14
+  - ZenLink Secondary v3.1.14
+- Zendure Home Assistant Integratie (Fireson) v1.2.5 [Zendure-HA integratie](https://github.com/Zendure/Zendure-HA)
+- Gielz automatisering en package v20260507 [Gielz-automatisering](https://github.com/Gielz1986/Zendure-HA-zenSDK)
 
 ## Instructies Zendure Hyper2000 integratie in Home Assistant
 - Installeer en configureer jouw Hyper2000 via de [Zendure-HA integratie](https://github.com/Zendure/Zendure-HA)
@@ -36,13 +46,14 @@ Installeer de [Node-Red Home-Assistant addon](https://github.com/hassio-addons/a
 - Importeer in een nieuwe Node-red flow  de [zenSDK Hyper2000 GET flow](https://github.com/twoenter/Zendure-zenSDK-Hyper-proxy/blob/main/zenSDK%20Hyper2000%20GET.json). Deze Node-red flow zorgt ervoor dat de informatie uit de Hyper naar de zendure entiteiten vertaald wordt voor de Gielz automatisering en dashboard.
 - Importeer in een nieuwe Node-red flow de [zenSDK Hyper2000 POST flow](https://github.com/twoenter/Zendure-zenSDK-Hyper-proxy/blob/main/zenSDK%20Hyper2000%20POST.json). Deze Node-red flow zorgt ervoor dat de waarden die de Gielz automatisering bepaald ook werkelijk naar de Hyper gecommuniceerd worden.    
 ### Pas in de GET flow het volgende aan:
- 1. het aantal batterijen: kopieer de nodes van batterij 2 (soc, power, state en maxTemp) door naar 3 en verder, zorg dat ze op dezelfde manier verbonden worden. De link node komt als laatste aan de laatste batterij
-  <img height="200" alt="image" src="https://github.com/user-attachments/assets/01f6f2af-3429-4169-a542-1229d60e4faa" />
+ 1. het aantal batterijen: verbind het juiste aantal batterijen door middel van de link nodes. Batterij 1 out link gaat naar Batterij 2 in en zo verder naar mate het aantal batterijen. Enable de nodes van de extra batterijen. De laatse out-node van de laatste batterij verbind je met de in-node 'Afronden update'. De volgorde in node-red hoeft niet te matchen met de volgorde in de stapel, dit kun je corrigeren in het gielz dashboard.
+  <img width="1322" height="736" alt="image" src="https://github.com/user-attachments/assets/99ae2c12-bcb9-453d-90d2-8baaa6345896" />
+
   
  2. de serienummers van de batterijen en packType: Het serienummer wordt gebruikt door Gielz om onderscheid te maken tussen de batterijen en ze in de juiste gewenste volgorde te plaatsen. packType is de capaciteit van de accu, voor een AB2000s/x gebruik je 70, wat 1,92kWh is.
   <img height="200" alt="image" src="https://github.com/user-attachments/assets/24fa01a3-dc5d-4346-a1bf-5769a88259d7" />
   
- 3. Verwijs in alle blauwe nodes van de batterijen naar de juiste entiteiten. De Zendure-HA integratie gebruikt standaard ``sensor.<<serienummer accu>>_power`` etc. Plak het juiste serienummer ertussen en het zal werken.
+ 3. Verwijs in alle blauwe nodes van de batterijen naar de juiste entiteiten. De Zendure-HA integratie gebruikt standaard ``sensor.<<serienummer accu>>_power`` etc. Plak het juiste serienummer ertussen en het zal werken zolang je de standaard namen niet aangepast hebt.
   <img height="200" alt="image" src="https://github.com/user-attachments/assets/0328fe08-e63c-4524-a821-fc7db37b9f0c" />
 
   4. Het serienummer van de Hyper
@@ -57,9 +68,12 @@ Installeer de [Node-Red Home-Assistant addon](https://github.com/hassio-addons/a
 
 ## Configureer gielz (2)
 - Stel in het gielz configuratie dashboard het ip-adres in van de Zendure op ``localhost:1880/endpoint``. Dit is het ip-adres van node red waardoor er connectie gelegd wordt tussen home assistant en node red. De twee beginnen over en weer te communiceren.
-  <img width="389" height="101" alt="image" src="https://github.com/user-attachments/assets/0e43cae9-3fdc-4c07-b581-a16a5e831297" />
+  <img width="416" height="150" alt="image" src="https://github.com/user-attachments/assets/7a99c900-75ce-4c2e-b85e-9c67c198581b" />
 - Stel de juiste oplaad en ontlaad maximalen in, passend bij jouw situatie. 
 
 ## Gereed
 De communicatie tussen Home Assistant en de Hyper2000 verloopt nu via Node-Red om gebruik te kunnen maken van de Gielz automatisering. Natuurlijk kun je altijd zelf de Hyper blijven aansturen, vergeet dan niet de gielz automatisering uit te schakelen, zodat er geen conflicterende opdrachten verzonden worden.
+
+## Tips
+In mijn ervaring is het beter om de rest ``scan_interval`` van de gielz automatisering van 1 naar 5 te verhogen, van veel verkeer naar de Hyper2000 schiet het nog wel eens in een freeze. Wanneer je een freeze ervaart, is de Hyper ogenschijnlijk nog online en bestuurbaar maar is dat in werkelijkheid niet. Commando's komen niet aan en worden niet uitgevoerd. Om een freeze te verhelpen kun je in de Fireson integratie klikken op Reset verbinding en/of de internetconnectie naar de Hyper even verbreken door in je router(app) even de verbinding naar de hyper te verbieden en na een aantal minuten weer toe te staan. 
   
